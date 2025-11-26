@@ -1,0 +1,368 @@
+<!doctype html>
+  <html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PetJoy — Accesorios para mascotas</title>
+    <meta name="description" content="Tienda online de accesorios para mascotas: collares, camas, juguetes y más. Envío nacional y garantía de calidad." />
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!-- placeholder favicon -->
+    <style>
+      /* Small polished tweaks */
+      .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); }
+      .product-img { aspect-ratio: 4/3; object-fit: cover; }
+    </style>
+    <!-- LEAFLET CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<!-- LEAFLET JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- NAV -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="#" class="flex items-center gap-3">
+            <img src="https://st3.depositphotos.com/1177973/14743/i/450/depositphotos_147439097-stock-photo-group-of-cute-dogs.jpg" alt="logo" class="w-10 h-10 rounded-full" />
+            <div>
+              <h1 class="font-bold text-lg">PetJoy</h1>
+              <p class="text-xs text-gray-500 -mt-1">Accesorios felices para tu mascota</p>
+            </div>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a href="#novedades" class="hover:underline">Novedades</a>
+            <a href="#productos" class="hover:underline">Productos</a>
+            <a href="#nosotros" class="hover:underline">Nosotros</a>
+            <a href="#contacto" class="hover:underline">Contacto</a>
+          </nav>
+
+          <div class="flex items-center gap-4">
+            <button id="searchBtn" class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 border rounded-full text-sm">Buscar</button>
+            <button id="cartBtn" class="relative inline-flex items-center gap-2 px-3 py-1.5 bg-amber-400 text-white rounded-full">Carrito <span id="cartCount" class="ml-1 bg-white text-amber-500 rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span></button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold">Todo para mimar a tu compañero peludo</h2>
+          <p class="mt-4 text-gray-600">Encuentra collares, camas, juguetes y accesorios especialmente seleccionados para comodidad, seguridad y diversión. Envíos a todo México y garantía de satisfacción.</p>
+
+          <ul class="mt-6 space-y-3">
+            <li class="flex items-start gap-3"><span class="font-bold text-amber-500">✓</span> Productos de calidad certificados</li>
+            <li class="flex items-start gap-3"><span class="font-bold text-amber-500">✓</span> Envío en 2-5 días (según zona)</li>
+            <li class="flex items-start gap-3"><span class="font-bold text-amber-500">✓</span> Atención personalizada</li>
+          </ul>
+
+          <div class="mt-6 flex gap-3">
+            <a href="#productos" class="inline-block px-5 py-3 bg-amber-500 text-white rounded-lg font-semibold">Ver productos</a>
+            <a href="#contacto" class="inline-block px-5 py-3 border rounded-lg">Contáctanos</a>
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <img src="https://i.pinimg.com/236x/dd/c3/e2/ddc3e2d5cff729faaf2e25a9ff7942e1.jpg" alt="mascota feliz" class="w-full h-full object-cover" />
+              <div class="mt-6">
+          
+        </div>
+      </div>
+    </section>
+  <!-- NOVEDADES -->
+  <section id="novedades" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+    <h3 class="text-2xl font-bold">Novedades & Ofertas</h3>
+    <p class="text-gray-600 mt-1">Aprovecha descuentos por tiempo limitado</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+
+      <!-- Oferta 1 -->
+      <article class="bg-white rounded-xl overflow-hidden shadow relative">
+        <span class="absolute top-2 left-2 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold">-20%</span>
+        <img src="https://images.milenio.com/YS0I9l0aSc2sEvddrmwQogq0P1w=/375x0/uploads/media/2024/01/24/estos-son-los-beneficios-de.jpg" class="product-img w-full" alt="Collar reforzado" />
+        <div class="p-4">
+          <h5 class="font-semibold">Servicio Medico</h5>
+          <p class="text-gray-600 text-sm">Enlace con expertos altamente recomendados</p>
+          <div class="mt-3 flex items-center justify-between">
+            <p class="text-amber-600 font-bold">$160.00 <span class="line-through text-gray-400 text-sm">$200.00</span></p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Oferta 2 -->
+      <article class="bg-white rounded-xl overflow-hidden shadow relative">
+        <span class="absolute top-2 left-2 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold">-30%</span>
+        <img src="https://m.media-amazon.com/images/I/81AT+nV0BpL.jpg" class="product-img w-full" alt="Dispensador de agua" />
+        <div class="p-4">
+          <h5 class="font-semibold">Combo juguetes</h5>
+          <p class="text-gray-600 text-sm">Para los que necesitan mucho entretenimiento</p>
+          <div class="mt-3 flex items-center justify-between">
+            <p class="text-amber-600 font-bold">$595.00 <span class="line-through text-gray-400 text-sm">$849.00</span></p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Oferta 3 -->
+      <article class="bg-white rounded-xl overflow-hidden shadow relative">
+        <span class="absolute top-2 left-2 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold">Nuevo</span>
+        <img src="https://sesiondefotos.mx/wp-content/uploads/2024/05/sesion-de-fotos-con-mascotas-2-840x1024.jpg" class="product-img w-full" alt="Hueso masticable" />
+        <div class="p-4">
+          <h5 class="font-semibold">Sesion de fotos</h5>
+          <p class="text-gray-600 text-sm">Para un recuerdo inifinito con tu mejor amigo | Agenda tu cita</p>
+          <div class="mt-3 flex items-center justify-between">
+            <p class="text-amber-600 font-bold">$50.00</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+    <!-- PRODUCTOS -->
+    <section id="productos" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+      <div class="flex justify-between items-center">
+        <h3 class="text-2xl font-bold">Productos destacados</h3>
+        <div class="text-sm text-gray-500">Precios en MXN</div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        <!-- Product cards generated by JS -->
+      </div>
+    </section>
+
+  
+
+    <!-- SOBRE NOSOTROS -->
+    <section id="nosotros" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="text-xl font-semibold">Sobre PetJoy</h4>
+        <p class="mt-3 text-gray-600">Somos una tienda creada por amantes de los animales. Seleccionamos productos pensando en la seguridad, la salud y el bienestar de perros y gatos. Parte de nuestras utilidades se destinan a refugios locales.</p>
+
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <h6 class="font-semibold">Calidad</h6>
+            <p class="text-sm text-gray-600 mt-1">Proveedores certificados y materiales seguros.</p>
+          </div>
+          <div>
+            <h6 class="font-semibold">Envíos</h6>
+            <p class="text-sm text-gray-600 mt-1">Envío económico y opción express.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form id="contactForm" class="bg-white p-6 rounded-xl shadow">
+          <h4 class="text-lg font-semibold">Contáctanos</h4>
+          <p class="text-sm text-gray-600 mt-1">¿Tienes dudas? Escríbenos y te responderemos en 24 hrs hábiles.</p>
+
+          <div class="mt-4 grid grid-cols-1 gap-3">
+            <input required name="name" placeholder="Nombre" class="border p-3 rounded" />
+            <input required name="email" type="email" placeholder="Correo" class="border p-3 rounded" />
+            <textarea required name="message" rows="4" placeholder="Mensaje" class="border p-3 rounded"></textarea>
+            <button type="submit" class="px-4 py-2 bg-amber-500 text-white rounded">Enviar</button>
+          </div>
+        </form>
+
+        <div class="bg-white p-6 rounded-xl shadow">
+          <h4 class="text-lg font-semibold">Datos</h4>
+          <p class="text-sm text-gray-600 mt-2">Tel: +52 81 2345 6789</p>
+          <p class="text-sm text-gray-600">Email: osbaldo_corpuscas@hotmail.com</p>
+          <p class="text-sm text-gray-600 mt-4">Dirección: Monterrey, NL — Tienda online</p>
+          <p class="text-sm text-amber-500 mt-2"><a href="https://www.facebook.com/osbaldo.corpus.31" target="_blank">Facebook</a></p>
+          <p class="text-sm text-amber-500 mt-2"><a href="https://www.instagram.com/cxrpxss?igsh=ZHZrcDFucWJxZnd2" target="_blank">Instagram</a></p>
+          <p class="text-sm text-amber-500 mt-2"><a href="https://www.tiktok.com/@osbaldocorpus?_r=1&_d=secCgYIASAHKAESPgo8vTLJd5DbvCTmh%2FtUZ6ZaEZ3j4%2FwX66M4FbxvmY5CKY%2BE6HEgzTGV4wbSa21IVHwhoXfa8jFoAAKXWrdsGgA%3D&_svg=1&checksum=e4ded171219521348b79a967de809738771d1a38c4ea370360070fc350f6d12c&item_author_type=1&sec_uid=MS4wLjABAAAAdykrrCwz8LSapG3kLOZo2l5ysLvOz108JqVZaLc5teD34DonYaMfwlqqasuBBOcR&sec_user_id=MS4wLjABAAAAdykrrCwz8LSapG3kLOZo2l5ysLvOz108JqVZaLc5teD34DonYaMfwlqqasuBBOcR&share_app_id=1233&share_author_id=6806143497881388038&share_link_id=E3A4D681-6671-4231-B29C-5F3651C6647E&share_region=MX&share_scene=1&sharer_language=es&social_share_type=5&source=h5_m&timestamp=1764045387&tt_from=copy&u_code=dbd590fkle0ade&ug_btm=b8727%2Cb0&user_id=6806143497881388038&utm_campaign=client_share&utm_medium=ios&utm_source=copy" target="_blank">Tiktok</a></p>
+          <p class="text-sm text-amber-500 mt-2"><a href="blob:https://www.facebook.com/8aa00a64-629d-4322-a8fd-18ab4684e423" target="_blank">Spotify</a></p>
+
+          <div class="mt-6">
+            <h6 class="font-semibold">Horario de atención</h6>
+            <p class="text-sm text-gray-600">Lun - Vie: 9:00 - 18:00 | Sáb: 9:00 - 14:00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-gray-600">© 2025 PetJoy. Todos los derechos reservados.</p>
+        <div class="flex gap-4 text-sm">
+          <a href="#">Términos</a>
+          <a href="#">Privacidad</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- CART SIDEBAR -->
+    <aside id="cartSidebar" class="fixed right-0 top-0 h-full w-96 transform translate-x-full transition-transform bg-white shadow-2xl z-50">
+      <div class="p-6 flex flex-col h-full">
+        <div class="flex justify-between items-center">
+          <h4 class="font-bold">Tu carrito</h4>
+          <button id="closeCart" class="text-gray-500">Cerrar</button>
+        </div>
+        <div id="cartItems" class="mt-4 flex-1 overflow-auto"></div>
+        <div class="mt-4">
+          <div class="flex justify-between items-center font-semibold">
+            <span>Total</span>
+            <span id="cartTotal">$0.00</span>
+          </div>
+          <button id="checkoutBtn" class="mt-4 w-full px-4 py-3 bg-amber-500 text-white rounded">Checkout</button>
+        </div>
+      </div>
+    </aside>
+
+    <script>
+      // Sample product database (IDs, names, prices are exact numbers per user preference)
+      const products = [
+        { id: 101, name: 'Collar reflector', price: 149.00, img :"https://www.latiendadefrida.com/cdn/shop/files/WebJPG-25802_CragCollar_MidnightWave_PRINT_1800x1200.jpg?v=1692296371" },
+        { id: 102, name: 'Pelota interactivaa', price: 199.00, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2kE6docgfbCYkYomQspfXr-Oz4jQwkeIDVg&s' },
+        { id: 103, name: 'Cama ortopédica', price: 899.00, img: 'https://dognut.com.mx/wp-content/uploads/2025/06/dognut-Cama-Ortopedica-para-perros-Mediana-y-Extragrande_6.jpg' },
+        { id: 104, name: 'Correa ajustable', price: 329.00, img: 'https://www.mistermascotas.com.mx/cdn/shop/products/correa-retractil-para-perro.png?v=1749574046' },
+        { id: 105, name: 'Dispensador de agua', price: 549.00, img: 'https://m.media-amazon.com/images/I/61aUMGzzjKL.jpg' },
+        { id: 106, name: 'Cepillo de dientes', price: 79.00, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0A8Cyh6omU8IR-TLOX3XHjrSjMOGP9A2E9g&s' },
+        { id: 107, name: 'Placas personalizables', price: 329.00, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsOjFQu5ejs0qDTMyZyWarqEAE50DKqvuGZw&s' },
+        { id: 108, name: 'Peine', price: 549.00, img: 'https://http2.mlstatic.com/D_NQ_NP_761795-MLM48486073602_122021-O-cepillo-peine-para-perro-doble-cara-ovalo-grande.webp' },
+        { id: 109, name: 'Hueso masticable', price: 79.00, img: 'https://freshpetnutrition.com/wp-content/uploads/2022/06/FN22-2.jpg' }
+      ];
+
+      // Render product cards
+      const grid = document.querySelector('#productos .grid');
+      const productGrid = document.querySelector('#productos > .grid, #productos .grid') || document.querySelector('#productos .grid');
+      const productsContainer = document.querySelector('#productos .grid') || document.querySelector('#productos > div');
+
+      const cardsContainer = document.querySelector('#productos .grid');
+      products.forEach(p => {
+        const card = document.createElement('article');
+        card.className = 'bg-white rounded-xl overflow-hidden shadow';
+        card.innerHTML = `
+          <img class="product-img w-full" src="${p.img}" alt="${p.name}" />
+          <div class="p-4">
+            <h5 class="font-semibold">${p.name}</h5>
+            <div class="mt-2 flex items-center justify-between">
+              <div class="text-amber-600 font-bold">$${p.price.toFixed(2)}</div>
+              <div class="flex gap-2">
+                <button class="addBtn px-3 py-1 border rounded" data-id="${p.id}">Añadir</button>
+                <button class="viewBtn px-3 py-1 bg-gray-100 rounded" data-id="${p.id}">Ver</button>
+              </div>
+            </div>
+          </div>
+        `;
+        cardsContainer.appendChild(card);
+      });
+
+      // Simple cart logic
+      let cart = [];
+      const cartCount = document.getElementById('cartCount');
+      const cartTotal = document.getElementById('cartTotal');
+      const cartItems = document.getElementById('cartItems');
+      const cartSidebar = document.getElementById('cartSidebar');
+
+      function openCart(){ cartSidebar.style.transform='translateX(0)'; }
+      function closeCart(){ cartSidebar.style.transform='translateX(100%)'; }
+
+      document.getElementById('cartBtn').addEventListener('click', ()=>{ openCart(); });
+      document.getElementById('closeCart').addEventListener('click', ()=>{ closeCart(); });
+
+      function updateCartUI(){
+        const count = cart.reduce((s,i)=>s+i.qty,0);
+        cartCount.textContent = count;
+        cartItems.innerHTML = '';
+        cart.forEach(item=>{
+          const div = document.createElement('div');
+          div.className = 'flex items-center gap-3 p-2 border-b';
+          div.innerHTML = `<div class="flex-1">
+              <div class="font-semibold">${item.name}</div>
+              <div class="text-sm text-gray-500">$${item.price.toFixed(2)} x ${item.qty}</div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <button class="px-2 py-1 border decrease" data-id="${item.id}">-</button>
+              <button class="px-2 py-1 border increase" data-id="${item.id}">+</button>
+            </div>`;
+          cartItems.appendChild(div);
+        });
+        const total = cart.reduce((s,i)=>s + i.price * i.qty, 0);
+        cartTotal.textContent = `$${total.toFixed(2)}`;
+
+        // attach increase/decrease
+        document.querySelectorAll('.increase').forEach(b=> b.onclick = (e)=>{ const id=+b.dataset.id; changeQty(id,1); });
+        document.querySelectorAll('.decrease').forEach(b=> b.onclick = (e)=>{ const id=+b.dataset.id; changeQty(id,-1); });
+      }
+
+      function changeQty(id, delta){
+        const idx = cart.findIndex(c=>c.id===id);
+        if(idx>-1){ cart[idx].qty += delta; if(cart[idx].qty<=0) cart.splice(idx,1); }
+        updateCartUI();
+      }
+
+      document.addEventListener('click', (e)=>{
+        if(e.target.matches('.addBtn')){
+          const id = +e.target.dataset.id; const p = products.find(x=>x.id===id);
+          const existing = cart.find(c=>c.id===id);
+          if(existing) existing.qty++; else cart.push({ id: p.id, name: p.name, price: p.price, qty: 1 });
+          updateCartUI(); openCart();
+        }
+        if(e.target.matches('.viewBtn')){
+          const id = +e.target.dataset.id; const p = products.find(x=>x.id===id);
+          alert(`${p.name} — $${p.price.toFixed(2)}\n\nDescripción: Producto de ejemplo.\nID: ${p.id}`);
+        }
+      });
+
+      // Contact form (fake)
+      document.getElementById('contactForm').addEventListener('submit', (ev)=>{
+        ev.preventDefault();
+        alert('Gracias — recibimos tu mensaje y te responderemos pronto.');
+        ev.target.reset();
+      });
+
+      // Init
+      updateCartUI();
+    </script>
+    <!-- MAPA BURJ KHALIFA -->
+<section id="mapa-burj" class="w-full mt-10">
+  <h2 class="text-2xl font-bold mb-4">Nuestra ubicacion:</h2>
+  <div id="map" style="height: 500px; width: 100%; border-radius: 10px; overflow: hidden;"></div>
+</section>
+
+<script>
+// Coordenadas del Burj Khalifa
+const burj = [25.197197, 55.274376];
+
+// Inicializar mapa
+const map = L.map('map').setView(burj, 18);
+
+// Capa del mapa
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap'
+}).addTo(map);
+
+// Lista de ubicaciones dentro y alrededor del Burj Khalifa
+const ubicaciones = [
+    { nombre: "Centro medico", coords: [25.197197, 55.274376] },
+    { nombre: "Centro de fotografias", coords: [25.197500, 55.274450] },
+    { nombre: "Almacen", coords: [25.197950, 55.275200] },
+    { nombre: "Salida trasera", coords: [25.195900, 55.275000] },
+    { nombre: "Parque familiar", coords: [25.195400, 55.273600] },
+    { nombre: "Tienda de articulos", coords: [25.196600, 55.274800] },
+    { nombre: "Lago recreativo", coords: [25.192900, 55.274200] },
+    { nombre: "Linea de produccion", coords: [25.197150, 55.274300] },
+    { nombre: "Estacionamiento", coords: [25.197300, 55.274000] },
+    { nombre: "Entrada principal", coords: [25.197700, 55.273900] }
+];
+
+// Agregar los puntos clickeables con popups
+ubicaciones.forEach(punto => {
+    L.marker(punto.coords)
+        .addTo(map)
+        .bindPopup(`<b>${punto.nombre}</b>`);
+});
+</script>
+
+  </body>
+  </html>
